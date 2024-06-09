@@ -7,6 +7,7 @@ import { CiLocationOn } from "react-icons/ci";
 
 
 function Header() {
+  console.log("helloworld")
   return (
     <header className='flex flex-col flex-wrap w-full border-solid border-neutral-400 border-y-2'>
         <section className='flex  justify-between w-full stroke-2'>
