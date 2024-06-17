@@ -12,24 +12,35 @@ import banner5 from '../assets/banner/b5.jpg'
 import banner6 from '../assets/banner/b7.jpg'
 import banner7 from '../assets/banner/b8.jpg'
 import banner8 from '../assets/banner/b9.jpg'
-import accessory2 from '../assets/products/accesory/p6.jpg'
-import women1 from '../assets/products/womenclothing/p7.jpg'
-
-
+import banner9 from '../assets/banner/b11.jpg'
+import banner10 from '../assets/banner/b10.jpg'
 
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 import { category } from "../products/category";
 import { mostvisited } from "../products/mostvisited";
+import { Link } from "react-router-dom";
 
 function Homepage() {
   const[slider,setslider]=useState(0)
  const sliders=[
   banner1,
-  banner3
+  banner3,
+  banner9,
+  banner10
  ]
 
+
+//  setInterval(()=>{
  
+//   switch (slider) {
+//     case 0:setslider((slider)=>slider+1);console.log("up")
+//     break
+//     case index :setslider((slider)=>slider-1); console.log("down");
+//       break;
+//   }
+
+//  },[5000])
 
  const nextslide=()=>{
   if(sliders.length>=slider){
@@ -49,6 +60,8 @@ const pervslide=()=>{
         <div style={{transform: `translateX(${slider * 100}%)`}} className="w-full flex flex-row duration-500 ease-in-out h-fit">
         <img  className="h-full w-full cursor-pointer object-cover " src={sliders[0]} alt="" />
         <img className="h-full w-full cursor-pointer object-cover" src={sliders[1]} alt="" />
+        <img className="h-full w-full cursor-pointer object-cover" src={sliders[2]} alt="" />
+        <img className="h-full w-full cursor-pointer object-cover" src={sliders[3]} alt="" />
         </div>
        
         <div className="absolute m-2 h-fit bottom-3 w-fit flex flex-row">
@@ -60,10 +73,11 @@ const pervslide=()=>{
         <h2 className='text-lg my-7 font-bold md:text-xl'>پیشنهاد جین وست</h2>
         <div className="flex flex-row flex-wrap">
         {suggestion.map((product)=>(
-             <div key={product.id} className='group cursor-pointer flex flex-col mr-2 px-1 pt-0  w-52 h-auto md:w-60 xl:w-72 '>
+          <Link to={`/${product.id}`} key={product.id}>
+             <div className='group cursor-pointer flex flex-col mr-2 px-1 pt-0  w-52 h-auto md:w-60 xl:w-72 '>
              <div className="transition-all ease-in-out duration-500 opacity-0 z-50 absolute group-hover:opacity-100">
                <GrView className="mx-2 mt-2 text-3xl p-2 bg-neutral-300 text-white rounded-full md:text-4xl xl:text-5xl"/>
-                <CiHeart className="mx-2 mt-2 text-3xl p-2 bg-neutral-300 text-white rounded-full  md:text-4xl lg:text-5xl"/>
+                <CiHeart className="mx-2 mt-2 text-3xl p-2 bg-neutral-300 text-white rounded-full  md:text-3xl lg:text-4xl"/>
              </div>
              <div className=" w-full h-56 overflow-hidden md:h-64 lg:h-72 xl:h-96">
            <img className='transition-all object-fill w-full ease-in-out duration-500 h-full group-hover:scale-110  bg-neutral-200 '  src={product.image} alt="" />
@@ -72,9 +86,10 @@ const pervslide=()=>{
            <h3 className='text-jean text-base font-medium mb-2 w-full truncate'>{product.name}</h3>
            <p className='text-jean2 font-bold text-base md:text-lg'>{product.price}<span className='text-jean2 text-base font-normal'>تومان</span></p>
            <div className='w-full bg-blue-200 justify-self-end'>
-           <h5 className='self-center font-semibold text-center  '>هر 800 هزار تومان یک هدیه</h5>
+           <h5 className='self-center font-semibold text-center text-jean2 '>هر 800 هزار تومان یک هدیه</h5>
            </div>
            </div>
+           </Link>
         ))}
         </div>
         </section>
@@ -100,7 +115,8 @@ const pervslide=()=>{
           <h2 className='text-xl my-7 font-bold'>پربازدید ترین محصولات</h2>
             <div className="flex flex-row flex-wrap">
               {mostvisited.map((product)=>(
-                  <div key={product.id} className=' flex flex-row gap-4 flex-wrap m-0'>
+                <Link key={product.id} to={`/${product.id}`}>
+                  <div  className=' flex flex-row gap-4 flex-wrap m-0'>
                   <div className='group flex flex-col mr-2  px-1 pt-0  md:w-60 h-auto xl:w-72 '>
                       <div className="transition-all z-50 ease-in-out duration-500 opacity-0 absolute group-hover:opacity-100">
                         <GrView className="mx-2 mt-2 text-3xl xl:text-5xl md:text-4xl p-2 bg-neutral-300 text-white rounded-full"/>
@@ -113,10 +129,11 @@ const pervslide=()=>{
                     <h3 className='text-jean text-sm md:text-base font-medium mb-2'>{product.name}</h3>
                     <p className='text-jean2 font-bold text-base xl:text-xl  md:text-lg'>{product.price}<span className='text-jean2 text-base font-normal'>تومان</span></p>
                     <div className='w-full bg-blue-200 justify-self-end'>
-                    <h5 className='self-center font-semibold text-center  '>هر 800 هزار تومان یک هدیه</h5>
+                    <h5 className='self-center font-semibold text-center text-jean2  '>هر 800 هزار تومان یک هدیه</h5>
                     </div>
                     </div>
                       </div>
+                      </Link>
               ))}
             </div>
              <div className="flex flex-row justify-center">
