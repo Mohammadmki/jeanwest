@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useReducer } from 'react'
 import { sumproducts } from '../helper/helper';
+import { select } from '@material-tailwind/react';
 
 const initialState={
     selectedproduct:[],
@@ -17,8 +18,28 @@ switch (action.typeof) {
         selectedproduct:[...state.selectedproduct],
           ...sumproducts(state.selectedproduct)
       }
-        break;
-
+        
+        case "REMOVE-ITEM":
+        const newSelectedProducts=state.selectedproduct.filter((i)=>i.id!==action.payload.id);
+         return{
+          ...state,
+          selectedproduct:[...newSelectedProducts],
+          ...sumproducts(newSelectedProducts)
+         }
+         case "INCRASE":
+          const incraseIndex=state.selectedproduct.findIndex((item)=>item.id==action.payload.id)
+          state.selectedproduct[incraseIndex].quantity++
+          return{
+            ...state,
+            ...sumproducts(state.selectedproduct)
+          }
+          case "DECRASE":
+            const decraseIndexx=state.selectedproduct.findIndex((item)=>item.id==action.payload.id)
+            state.selectedproduct[decraseIndexx].quantity--
+            return{
+              ...state,
+              ...sumproducts(state.selectedproduct)
+            }
     default:
       throw new Error("invalid action")
 }

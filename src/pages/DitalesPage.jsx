@@ -14,6 +14,7 @@ import { Link } from 'react-router-dom';
 import { useproduct } from '../context/ProcuctsProvidev';
 import toast from 'react-hot-toast';
 import { propTypesDefaultValue } from '@material-tailwind/react/types/components/slider';
+import Modal from '../components/Modal';
 
 function DitalesPage() {
   const sizes=[
@@ -28,6 +29,7 @@ function DitalesPage() {
   const id=useParams()
   const image=useRef(null)
   const[product,setProduct]=useState([])
+  const[show,setshow]=useState(false)
 const[sizee,setSize]=useState("M")
 const[discriptionn,setDiscripton]=useState("ویژگی ها")
 const[x,setx]=useState({})
@@ -58,14 +60,17 @@ useEffect(()=>{
    }
    const [state,dispatch]=useproduct()
 const seavedProductHandeler=()=>{
-  setx({...product[0]})
-dispatch({typeof:'ADD-ITEM',payload:x})
- 
   
+    setx({...product[0]})
+    dispatch({typeof:'ADD-ITEM',payload:x})
+       setshow(true)
 }
 console.log(state)
+console.log(show)
   return ( 
+   
      <div className='flex flex-col justify-end  gap-8'>
+      {show&&<Modal setshow={setshow} />}
       <div className='flex flex-row-reverse'>
        <div className='w-1/3 '>
         <div className='flex flex-col gap-y-4 xl:gap-y-6 border-neutral-200 border-b-2 border-solid'>
