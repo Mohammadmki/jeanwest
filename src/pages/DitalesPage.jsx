@@ -129,7 +129,7 @@ console.log(show)
                 <h2  className={discriptionn=="مشخصات محصول"?'duration-100 ease-in-out text-black text-lg font-semibold cursor-pointer border-solid border-b-4 border-black ':"text-neutral-400 text-lg font-semibold cursor-pointer "} onClick={optionHandeler}>مشخصات محصول</h2>
                 </div>
                 <div  className={discriptionn=="ویژگی ها"?'bg-neutral-100  mt-2':'hidden'} >
-                  <ul className='flex gap-y-3 p-1 flex-col list-disc list-inside  '>
+                  <ul className='flex gap-y-3 p-1 flex-col list-disc list-inside  xl:text-xl'>
                     <li >
                     <strong>جنس الیاف : </strong>80% نخ پنبه، 20% لینن
                     </li>
@@ -145,7 +145,7 @@ console.log(show)
                   </ul>
                 </div>
                 <div className={discriptionn=="مشخصات محصول"?'bg-neutral-100 mt-2':'hidden'} >
-                  <ul className='flex gap-y-3 p-1 flex-col list-disc list-inside '>
+                  <ul className='flex gap-y-3 p-1 flex-col list-disc list-inside xl:text-xl'>
                     <li >
                     <strong> کد محصول : </strong>42531130J-2610-XXL
                     </li>

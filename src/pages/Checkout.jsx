@@ -34,28 +34,28 @@ function Checkout() {
       </div>
       <div className='flex flex-col mt-5'>
        {state.selectedproduct.map((p)=>(
-        <div className='flex flex-col gap-y-3 border-solid pb-4 border-neutral-200 border-b-2 mt-5'>
-          <div className='flex justify-around  flex-row'>
+        <div className='flex flex-col gap-y-3  border-solid pb-4 border-neutral-200 border-b-2 mt-5'>
+          <div className='flex justify-between  flex-row'>
             <div className='flex flex-row gap-x-4'>
-          <img className='w-36 h-40' src={p.image} alt="" />
+          <img className='w-36 h-48 mr-2 xl:w-44 xl:h-56' src={p.image} alt="" />
           <div>
-            <h2 className='font-semibold'>jeanwest</h2>
-            <p className='font-bold'>{p.name}</p>
+            <h2 className='font-semibold xl:text-xl'>jeanwest</h2>
+            <p className='font-bold xl:text-2xl'>{p.name}</p>
           </div>
           </div>
           <div>
-            <p className='text-gray-400 font-medium'>رنگ :<span className='text-jean2 font-bold'>سبز</span></p>
-            <p className='text-gray-400 font-medium'>سایز :<span className='text-jean2 font-bold'>{p.sizee}</span></p>
-            <p className='text-gray-400 font-medium'>کد کالا :<span className='text-jean2 font-bold'>133ar</span></p>
+            <p className='text-gray-400 font-medium xl:text-xl'>رنگ :<span className='text-jean2 font-bold'>سبز</span></p>
+            <p className='text-gray-400 font-medium xl:text-xl'>سایز :<span className='text-jean2 font-bold'>{p.sizee}</span></p>
+            <p className='text-gray-400 font-medium xl:text-xl'>کد کالا :<span className='text-jean2 font-bold'>133ar</span></p>
           </div>
-          <div>
-          <p className='font-bold text-xl'>{p.price}<span className='font-normal text-base text-jean2'>تومان</span></p>
-          <div className='flex flex-row-reverse gap-x-5'>
-           {p.quantity===1? <button  >{<RiDeleteBinLine className='text-red-600 text-4xl font-medium' onClick={()=>{dispatch({typeof:"REMOVE-ITEM",payload:p})}} />}</button>:
-           <button className='text-5xl text-center font-semibold' onClick={()=>dispatch({typeof:"DECRASE",payload:p})}>-</button>
+          <div className='flex flex-row  '>
+          <p className='font-bold text-2xl xl:text-4xl  ml-10'>{p.price}<span className='font-normal text-lg text-jean2'>تومان</span></p>
+          <div className='flex flex-row-reverse gap-x-5 h-fit py-2 px-3 ring-1 ring-neutral-200'>
+           {p.quantity===1? <button  >{<RiDeleteBinLine className='text-red-600 text-2xl xl:text-4xl font-medium' onClick={()=>{dispatch({typeof:"REMOVE-ITEM",payload:p})}} />}</button>:
+           <button className='text-3xl xl:text-5xl text-center font-semibold' onClick={()=>dispatch({typeof:"DECRASE",payload:p})}>-</button>
            }
-            <h2 className='text-4xl font-medium'>{p.quantity}</h2>
-            <button className='text-4xl text-center font-semibold' onClick={()=>dispatch({typeof:"INCRASE",payload:p})}>+</button>
+            <h2 className='text-3xl xl:text-5xl font-medium'>{p.quantity}</h2>
+            <button className='text-3xl text-center font-semibold xl:text-5xl' onClick={()=>dispatch({typeof:"INCRASE",payload:p})}>+</button>
           </div>
           </div>
           </div>

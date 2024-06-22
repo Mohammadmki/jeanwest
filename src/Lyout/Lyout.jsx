@@ -5,7 +5,7 @@ function Lyout({children}) {
   return (
     <>
     <Header/>
-    <div className="min-h-[100vh]">{children}</div>
+    <div className="min-h-[100vh] w-full">{children}</div>
     <Foote />
     </>
   )

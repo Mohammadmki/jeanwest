@@ -55,9 +55,9 @@ const pervslide=()=>{
 }
 
   return (
-    <main className="w-full">
-      <section className='w-full h-fit overflow-hidden  relative'>
-        <div style={{transform: `translateX(${slider * 100}%)`}} className="w-full flex flex-row duration-500 ease-in-out h-fit">
+    <main className="w-full overflow-hidden">
+      <section className='w-full overflow-hidde relative  xl:h-[650px] '>
+        <div style={{transform: `translateX(${slider * 100}%)`}} className="w-full flex xl:h-full md:h-full flex-row duration-500 ease-in-out">
         <img  className="h-full w-full cursor-pointer object-cover " src={sliders[0]} alt="" />
         <img className="h-full w-full cursor-pointer object-cover" src={sliders[1]} alt="" />
         <img className="h-full w-full cursor-pointer object-cover" src={sliders[2]} alt="" />
@@ -71,11 +71,11 @@ const pervslide=()=>{
       </section>
         <section>
         <h2 className='text-lg my-7 font-bold md:text-xl'>پیشنهاد جین وست</h2>
-        <div className="flex flex-row flex-wrap">
+        <div className="flex flex-row  justify-center overflow-x-auto ">
         {suggestion.map((product)=>(
           <Link to={`/${product.id}`} key={product.id}>
-             <div className='group cursor-pointer flex flex-col mr-2 px-1 pt-0  w-52 h-auto md:w-60 xl:w-72 '>
-             <div className="transition-all ease-in-out duration-500 opacity-0 z-50 absolute group-hover:opacity-100">
+             <div className='group cursor-pointer flex flex-col mr-2 px-1 pt-0  w-52 h-auto md:w-64 xl:w-72 xl:mr-4 '>
+             <div className="transition-all self-start ease-in-out duration-500 opacity-0 z-50 absolute group-hover:opacity-100">
                <GrView className="mx-2 mt-2 text-3xl p-2 bg-neutral-300 text-white rounded-full md:text-4xl xl:text-5xl"/>
                 <CiHeart className="mx-2 mt-2 text-3xl p-2 bg-neutral-300 text-white rounded-full  md:text-3xl lg:text-4xl"/>
              </div>
@@ -94,13 +94,15 @@ const pervslide=()=>{
         </div>
         </section>
       
-          <section className="my-36 flex flex-row flex-wrap">
+          <section className="my-36 flex flex-row flex-wrap justify-center">
            <h2 className=' text-lg md:text-xl  text-black my-7 font-bold w-full'>دسته بندی محصولات</h2>
-          <div className="flex flex-row flex-wrap">
+          <div className="flex flex-row flex-wrap ">
             {category.map((categori)=>(
-                 <div key={categori.id} className="ring-1 mx-2 cursor-pointer ring-neutral-200 w-40 h-32 md:w-48 md:h-40 xl:w-52 xl:h-48">
+                 <div key={categori.id} className="ring-1 mx-2 cursor-pointer content-between ring-neutral-200 w-40 h-32 md:w-64 md:h-48 xl:w-72 xl:h-52">
+                
                  <img className="w-full h-24 xl:h-40 md:h-32 object-cover bg-neutral-300" src={categori.Image} alt="" />
-                 <div className="flex flex-row justify-between items-baseline ">
+                
+                 <div className="flex flex-row justify-between  items-baseline mt-5">
                    <p className='text-black font-bold text-base md:text-lg xl:text-xl'>{categori.name}</p>
                    <FaChevronLeft />
                  </div>
@@ -117,8 +119,8 @@ const pervslide=()=>{
               {mostvisited.map((product)=>(
                 <Link key={product.id} to={`/${product.id}`}>
                   <div  className=' flex flex-row gap-4 flex-wrap m-0'>
-                  <div className='group flex flex-col mr-2  px-1 pt-0  md:w-60 h-auto xl:w-72 '>
-                      <div className="transition-all z-50 ease-in-out duration-500 opacity-0 absolute group-hover:opacity-100">
+                  <div className='group flex flex-col mr-2  px-1 pt-0  md:w-64 h-auto xl:w-72 xl:mr-4 '>
+                      <div className="transition-all self-start z-50 ease-in-out duration-500 opacity-0 absolute group-hover:opacity-100">
                         <GrView className="mx-2 mt-2 text-3xl xl:text-5xl md:text-4xl p-2 bg-neutral-300 text-white rounded-full"/>
                          <CiHeart className="mx-2 mt-2 text-3xl md:text-4xl xl:text-5xl  p-2 bg-neutral-300 text-white rounded-full"/>
                       </div>
@@ -136,8 +138,8 @@ const pervslide=()=>{
                       </Link>
               ))}
             </div>
-             <div className="flex flex-row justify-center">
-              <div className=" mx-10 border-solid pl-9 flex flex-col justify-center border-neutral-300 border-l-2" >
+             <div className="flex flex-row justify-around mt-28">
+              <div className=" mx-10 border-solid pl-9 flex flex-col justify-center border-neutral-300 border-l-2 " >
                 <img className="md:w-24 xl:w-32" src={banner7} alt="" />
                 <h3 className="text-jean font-bold">تعویض انلاین</h3>
               </div>
