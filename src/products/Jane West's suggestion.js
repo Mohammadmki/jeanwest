@@ -9,5 +9,7 @@ const suggestion=[
     {name:"ساعت مردانه" ,id:2, image:accessory2 ,price:350000},
     {name:"تیشرت مردانه " ,id:3, image:men1 ,price:500000},
     {name:"لباس زنانه" ,id:4, image:women2 ,price:220000},
+  
+    
 ]  
 export{suggestion}

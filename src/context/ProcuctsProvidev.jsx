@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useReducer } from 'react'
 import { sumproducts } from '../helper/helper';
-import { select } from '@material-tailwind/react';
+
 
 const initialState={
     selectedproduct:[],
@@ -12,7 +12,7 @@ switch (action.typeof) {
     case 'ADD-ITEM':
       if(!state.selectedproduct.find((product)=>product.id==action.payload.id)){
         state.selectedproduct.push({...action.payload,quantity:1 });
-        console.log(state.selectedproduct)
+       
       }
       return {
         selectedproduct:[...state.selectedproduct],
@@ -29,6 +29,7 @@ switch (action.typeof) {
          case "INCRASE":
           const incraseIndex=state.selectedproduct.findIndex((item)=>item.id==action.payload.id)
           state.selectedproduct[incraseIndex].quantity++
+
           return{
             ...state,
             ...sumproducts(state.selectedproduct)
@@ -48,6 +49,7 @@ switch (action.typeof) {
 const productContext=createContext()
 function ProcuctsProvidev({children}) {
     const [state,dispatch] =useReducer(reducer,initialState)
+    console.log(state.selectedproduct)
   return (
     <productContext.Provider value={{state,dispatch}}>{children}</productContext.Provider>
   )

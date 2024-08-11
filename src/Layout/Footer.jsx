@@ -4,7 +4,7 @@ import { FaInstagram } from "react-icons/fa";
 import { LuLinkedin } from "react-icons/lu";
 import { FiYoutube } from "react-icons/fi";
 
-function Foote() {
+function Footer() {
   return (
     <footer className='flex flex-col items-center border-spacing-y-8'>
       <div  className='border-y-2 border-solid border-neutral-200 py-8 mb-9'>
@@ -57,4 +57,4 @@ function Foote() {
     </footer>
   )
 }
-export default Foote
+export default Footer

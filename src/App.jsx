@@ -1,16 +1,17 @@
 import { BrowserRouter } from "react-router-dom"
 import Router from "./router/Router"
-import Lyout from "./Lyout/Lyout"
+
 import ProcuctsProvidev from "./context/ProcuctsProvidev"
+import Layout from "./Layout/Layout"
 
 function App() {
 
   return (
    <BrowserRouter>
    <ProcuctsProvidev>
-   <Lyout>
+   <Layout>
    <Router/>
-   </Lyout>
+   </Layout>
    </ProcuctsProvidev>
    </BrowserRouter>
   )

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 function Modal({setshow}) {
   return (
-    <div  className='flex w-full h-[100%] top-0 left-0 fixed backdrop-brightness-50 flex-row items-center justify-center '>
+    <div  className='flex w-full h-[100%] top-0 left-0 fixed backdrop-brightness-50 flex-row items-center justify-center z-50'>
         <div className='bg-white w-[465px] h-72 flex rounded-lg flex-col pt-8 justify-center items-center '>
             <div className='flex-col flex justify-center items-center mb-2'>
              <img className='w-24 h-20 ' src={banner} alt="" />

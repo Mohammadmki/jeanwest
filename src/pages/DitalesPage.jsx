@@ -8,13 +8,12 @@ import banner5 from '../assets/banner/b5.jpg'
 import banner6 from '../assets/banner/b7.jpg'
 import banner7 from '../assets/banner/b8.jpg'
 import banner8 from '../assets/banner/b9.jpg'
-
 import { mostvisited } from '../products/mostvisited';
 import { Link } from 'react-router-dom';
 import { useproduct } from '../context/ProcuctsProvidev';
-import toast from 'react-hot-toast';
-import { propTypesDefaultValue } from '@material-tailwind/react/types/components/slider';
 import Modal from '../components/Modal';
+import Sideimage from '../components/detalepage/Sideimage';
+
 
 function DitalesPage() {
   const sizes=[
@@ -30,9 +29,13 @@ function DitalesPage() {
   const image=useRef(null)
   const[product,setProduct]=useState([])
   const[show,setshow]=useState(false)
-const[sizee,setSize]=useState("M")
+const[sizee,setSize]=useState("")
 const[discriptionn,setDiscripton]=useState("ویژگی ها")
 const[x,setx]=useState({})
+
+
+
+
 const clickHandeler=()=>{
    
     image.current.classList=[image.current.classList," ring-2 ring-jean  ring-jean"]
@@ -54,6 +57,8 @@ useEffect(()=>{
    
    }
    
+ 
+
    const optionHandeler=(e)=>{
     setDiscripton(e.target.innerText)
     
@@ -65,45 +70,46 @@ const seavedProductHandeler=()=>{
     dispatch({typeof:'ADD-ITEM',payload:x})
        setshow(true)
 }
-console.log(state)
-console.log(show)
+
+
   return ( 
    
-     <div className='flex flex-col justify-end  gap-8'>
+     <div className='flex flex-col justify-end  gap-4'>
       {show&&<Modal setshow={setshow} />}
-      <div className='flex flex-row-reverse'>
-       <div className='w-1/3 '>
-        <div className='flex flex-col gap-y-4 xl:gap-y-6 border-neutral-200 border-b-2 border-solid'>
-          <h3 className='text-jean text-lg font-normal md:text-xl xl:text-2xl'>jeanwest</h3>
-          <h2 className='text-lg md:text-xl font-semibold '>{product[0]?.name}</h2>
-          <p className='text-neutral-400'>دسته بندی:<span className='text-jean font-medium'>لباس</span></p>
-          <p className='text-xl md:text-2xl xl:text-3xl font-bold text-jean2'>{product[0]?.price}<span className='font-normal text-base'>تومان</span></p>
-          <p className='bg-blue-100 font-medium  w-fit px-1 mb-3 flex items-center'>نصف قیمت<GiFireZone className='text-orange-600 w-fit'/></p>
+      <div className='grid grid-cols-3 gap-0'>
+       <Sideimage image={product[0]?.image} />
+       <div className='w-full pl-3 '> 
+        <div className='flex flex-col gap-y-4  xl:gap-y-6 border-neutral-200 border-b-2 border-solid'>
+          <h3 className='text-jean text-lg font-normal md:text-lg lg:text-3xl xl:text-4xl'>jeanwest</h3>
+          <h2 className='text-lg md:text-lg font-semibold '>{product[0]?.name}</h2>
+          <p className='text-slate-400 md:text-base font-medium lg:text-lg xl:text-xl'>دسته بندی:<span className='text-jean font-medium'>لباس</span></p>
+          <p className='text-lg  md:text-xl xl:text-2xl font-medium text-jean2'>{product[0]?.price}<span className='font-normal text-base'>تومان</span></p>
+          <p className='bg-blue-100 font-medium md:text-sm lg:text-lg xl:text-xl  w-fit px-1 mb-3 flex items-center'>نصف قیمت<GiFireZone className='text-orange-600 w-fit'/></p>
         </div>
         <div className='mt-3'>
-          <p className='text-gray-500'>رنگ:<span className='font-medium text-black'>سبز</span></p>
-          <img className='md:w-20 xl:w-20 mt-5 mb-5 cursor-pointer' ref={image} onClick={clickHandeler} src={product[0]?.image} alt="" />
+          <p className='text-slate-400 md:text-sm lg:text-lg xl:text-xl'>رنگ:<span className='font-medium text-jean'>سبز</span></p>
+          <img className='md:w-20 xl:w-36 lg:w-32 mt-5 mb-5 cursor-pointer' ref={image} onClick={clickHandeler} src={product[0]?.image} alt="" />
           <div>
             <div className='flex flex-row justify-between w-full '>
-            <p className='text-gray-500 md:text-base' >سایز: <span className={sizee==""? "text-red-800":"text-black"}>{sizee==""?"سایز خود را انخاب کنید":sizee}</span></p>
-            <p className='ml-1 text-jean2 flex items-center cursor-pointer'><CiRuler className='text-3xl'/>راهنمای سایز</p>
+            <p className='text-slate-400 md:text-sm lg:text-lg xl:text-xl lg:font-medium' >سایز: <span className={sizee==""? "text-red-800 text-sm lg:text-base xl:text-lg":"text-jean font-medium text-sm lg:text-base xl:text-lg"}>{sizee==""?"سایز خود را انخاب کنید":sizee}</span></p>
+            <p className='ml-1 text-jean2 flex items-center cursor-pointer md:text-sm lg:text-lg xl:text-xl font-medium'><CiRuler className='text-3xl'/>راهنمای سایز</p>
             </div>
-            <div>
+            <div className='flex flex-row flex-wrap w-full'>
             {sizes.map((size)=>(
-               <button key={size.id} onClick={sizeHandeler} className={sizee==size.name?"w-14 cursor-pointer p-1 m-2 border-solid  border-neutral-300 border-2 ring-2 ring-jean2 ":"w-14 cursor-pointer p-1 m-2 border-solid  border-neutral-300 border-2  "} >{size.name}</button>
+               <button key={size.id} onClick={sizeHandeler} className={sizee==size.name?"cursor-pointer p-1 m-2 border-solid lg:w-20 md:w-16 w-12 h-10 xl:w-24   border-2  border-jean2 ":"lg:w-20 md:w-16 w-12 h-10 xl:w-24 cursor-pointer  m-2 border-solid  border-neutral-300 border-2"} >{size.name}</button>
             ))}
             
             </div>
           </div>
-          <div className='flex flex-row'>
-          <button className='transition-all duration-300 ease-in-out w-40 h-10 ml-2 md:w-48 xl:w-48  xl:h-12 md:h-12 font-semibold rounded-sm bg-jean text-white hover:bg-jean2' onClick={seavedProductHandeler}>اضافه کردن به سبد خرید</button>
-          <button className='ring-1 w-40 h-10 flex items-center xl:w-52 xl:h-12 ring-neutral-300 md:h-12 md:w-44 font-semibold'>  <GrMapLocation className='text-xl'/>   موجودی در شعب   </button>
+          <div className='grid grid-cols-2 gap-x-4'>
+          <button className='transition-all duration-300 ease-in-out   md:h-12 font-semibold rounded-sm md:text-xs lg:text-sm bg-jean text-white hover:bg-jean2' onClick={seavedProductHandeler}>اضافه کردن به سبد خرید</button>
+          <button className='ring-1 flex items-center justify-center md:text-xs md:font-bold ring-neutral-300 font-semibold'>  <GrMapLocation className='text-xl'/>   موجودی در شعب   </button>
           </div>
         </div>
         </div>
-        <div className='w-2/3'>
-          <img src={product[0]?.image} alt="" />
-        </div>
+       
+       
+        
         </div>
         <div className="flex flex-row justify-center my-8">
               <div className=" mx-10 border-solid pl-9 flex flex-col justify-center border-neutral-300 border-l-2" >

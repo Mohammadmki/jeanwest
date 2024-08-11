@@ -63,7 +63,7 @@ function Checkout() {
        ))}
       </div>
       <p className='my-14 text-base text-gray-400'>کالاهای موجود در سبد شما ثبت و رزرو نشده‌اند. برای ثبت سفارش باید مراحل بعدی را تکمیل کنید.</p>
-       <div className='flex flex-row gap-x-6 mb-7'>
+       <div className='grid grid-cols-2 gap-x-6 mb-7'>
         <div >
           <div className='border-2 border-neutral-300 border-solid p-5 mb-10 '>
             <input className='w-72 h-10 bg-white border-solid mx-3 border-neutral-200 border-2' type="text" name='code' placeholder='کد تخفیف را اینجا وارد کنید' />
